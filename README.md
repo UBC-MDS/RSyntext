@@ -21,9 +21,9 @@ Sample functionality included in this package for a given text passage:
 * ...etc.
 
 
-### Function 1: TextSummarize
+### Function 1: `TextSummarize`
 
-`TextSummarize` function of class `RySyntext` takes in `string` as an input and produces `DataFrame` as an output containing a quantitative summary of the input. The quantitative summary needs:
+`TextSummarize` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing a quantitative summary of the input. The quantitative summary entails the following:
 
 - Number of Words
 - Number of Sentences
@@ -61,9 +61,9 @@ The function takes in the following arguments:
 | gibberish_remove |  boolean | True  |
 | split_by | char | *space*  |
 
-### Function 2: TextGrams
+### Function 2: `TextGrams`
 
-`TextGrams` function of class `RySyntext` takes in `string` as an input and produces `DataFrame` as an output containing lists of top 5 ngrams. The top `k` ngrams and `n` are user based inputs with default values (k=5 and n=(2,3))
+`TextGrams` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing lists of top 5 ngrams. The top `k` ngrams and `n` are user based inputs with default values (k=5 and n=(2,3))
 
 | Name | Type |
 |---|---|
@@ -75,6 +75,7 @@ The function takes in the following arguments:
 |Column| Type|
 |---|---|
 | ngrams | list |
+
 *Number of rows are dependent on the input  `n` of the user*
 *Size of the list is dependent on the input `k` of the user*
 
@@ -93,9 +94,9 @@ The function takes in the following arguments:
 | gibberish_remove |  boolean | True  |
 | split_by | char | *space*  |
 
-### Function 3: TextQuality
+### Function 3: `TextQuality`
 
-`extQuality` function of class `RySyntext` takes in `string` as an input and produces `DataFrame` as an output a qualitative summary of the input. The qualitative summary would include the following:
+`extQuality` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output a qualitative summary of the input. The qualitative summary would include the following:
 
 - Spelling Mistakes: Words spelt wrong/Total words
 - Overall Sentiment: "Positive" or "Negative"
@@ -119,9 +120,9 @@ The function takes in the following arguments:
 | encoding | string | ‘utf-8’|
 | split_by | char | *space*  |
 
-### Function 4: TextTags
+### Function 4: `TextTags`
 
-`TextTags` function of class `RySyntext` takes in `string` as an input and produces `DataFrame` as an output containing a summary of parts of speech tags.
+`TextTags` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing a summary of parts of speech tags.
 
 | Name | Type |
 |---|---|
@@ -146,6 +147,6 @@ The function takes in the following arguments:
 
 ### R Ecosystem
 
-It seems as if [OpenNLP](https://cran.r-project.org/web/packages/openNLP/openNLP.pdf) is the most popular Natural Language Processing package that exists in the R landscape. It provides the framework for general machine learning models, and includes functions for text analysis. 
+It seems as if [OpenNLP](https://cran.r-project.org/web/packages/openNLP/openNLP.pdf) is the most popular Natural Language Processing package that exists in the R landscape. It provides the framework for general machine learning models, and includes functions for text analysis.
 
-Although OpenNLP provides the framework for tokenizing and fitting models to text data, it is difficult to create a quick-and-dirty summary of your data using these packages. By using RSyntext, summary and sentiment of text data is quickly achievable, allowing users to determine the worth of their dataset. 
+Although OpenNLP provides the framework for tokenizing and fitting models to text data, it is difficult to create a quick-and-dirty summary of your data using these packages. By using RSyntext, summary and sentiment of text data is quickly achievable, allowing users to determine the worth of their dataset.
