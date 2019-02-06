@@ -124,6 +124,10 @@ The function takes in the following arguments:
 
 `TextTags` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing a summary of parts of speech tags.
 
+- Number of nouns
+- Number of verbs
+- Number of adjectives
+
 | Name | Type |
 |---|---|
 | Input | String |
