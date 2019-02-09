@@ -2,10 +2,10 @@ context("Test text_quality")
 
 #'
 
-#' This script tests the text_quality function of the PySyntext package.
+#' This script tests the text_quality function of the RSyntext package.
 #'
 #'
-#' text_quality function of the PySyntext package, checks the
+#' text_quality function of the RSyntext package, checks the
 #' quality of the string in terms of spelling errors and toxicity content.
 #' It takes in a string as input and returns a dataframe.
 #' The function performs necessary cleaning on the input string.
