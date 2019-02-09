@@ -52,6 +52,35 @@ test_that("Test that output contains non-negative values", {
 })
 
 
+#' Test for valid input
+test_that("Input should be a string", {
+
+  text <- 123
+
+  expect_error(text_quality(text))
+
+})
+
+
+#' Test for valid input
+test_that("Input should be a string", {
+
+  text <- ""
+
+  expect_error(text_quality(text))
+
+})
+
+
+#' Test for valid input
+test_that("Input should be a string", {
+
+  text <- "!@#^&*(*&!&@_@_@)((@}}}}"
+
+  expect_error(text_quality(text))
+
+})
+
 
 
 #' Test for functionality
@@ -59,7 +88,7 @@ test_that("Test that spell error gives expected output", {
 
   output <- text_quality(text)
 
-  expect_true(output$spell_error==df$spell_error)
+  expect_true(output$spell_error>=df$spell_error-0.02 & output$spell_error<=df$spell_error+0.02)
 
 })
 
@@ -69,7 +98,7 @@ test_that("Test that toxicity gives expected output", {
 
   output <- text_quality(text)
 
-  expect_true(output$toxicity==df$toxicity)
+  expect_true(output$toxicity>=df$toxicity-0.02 & output$toxicity<=df$toxicity+0.02)
 
 })
 
