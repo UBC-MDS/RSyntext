@@ -26,6 +26,12 @@
 #'
 
 #' @param text string
+#' @param stopwords_remove Boolean
+#' @param lemmatize Boolean
+#' @param remove_punctuation Boolean
+#' @param remove_numbers Boolean
+#' @param case_sensitive Boolean
+#' @param gibberish_remove Boolean
 
 #'
 
