@@ -1,0 +1,17 @@
+Package: RSyntext
+Title: Summarize text data
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Harjyot",
+           family = "Kaur",
+           role = c("aut", "cre"),
+           email = "harjyotkaur.1409@gmail.com")
+Description: This package provides the framework to perform quick and high level summary statistics on text data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat,
+    MASS
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
