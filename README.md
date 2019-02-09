@@ -21,9 +21,9 @@ Sample functionality included in this package for a given text passage:
 * ...etc.
 
 
-### Function 1: `TextSummarize`
+### Function 1: `text_summarize`
 
-`TextSummarize` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing a quantitative summary of the input. The quantitative summary entails the following:
+`text_summarize` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing a quantitative summary of the input. The quantitative summary entails the following:
 
 - Number of Words
 - Number of Sentences
@@ -39,7 +39,7 @@ Sample functionality included in this package for a given text passage:
 
 #### Output: Dataframe
 
-|Column| Type|
+| Column | Type|
 |---|---|
 | word_count | int |
 | sentence_count | int |
@@ -52,18 +52,19 @@ The function takes in the following arguments:
 
 | Name | Type | Default|
 |---|---|---|
+| string | str | NA |  
+| stopwords_remove | boolean | True |
 | stopwords_remove | boolean | True |
 | lemitize | boolean | False |
-| encoding | string | ‘utf-8’|
 | remove_punctuation | boolean | True |
 | remove_numbers |  boolean | True |
 | case_sensitive |  boolean | False |
 | gibberish_remove |  boolean | True  |
-| split_by | char | *space*  |
 
-### Function 2: `TextGrams`
 
-`TextGrams` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing lists of top 5 ngrams. The top `k` ngrams and `n` are user based inputs with default values (k=5 and n=(2,3))
+### Function 2: `text_grams`
+
+`text_grams` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing lists of top 5 ngrams. The top `k` ngrams and `n` are user based inputs with default values (k=5 and n=(2,3))
 
 | Name | Type |
 |---|---|
@@ -72,7 +73,7 @@ The function takes in the following arguments:
 
 #### Output: Dataframe
 
-|Column| Type|
+| Column | Type|
 |---|---|
 | ngrams | list |
 
@@ -83,20 +84,20 @@ The function takes in the following arguments:
 
 | Name | Type | Default|
 |---|---|---|
+| string | str | NA |
 | k | int | 5 |
 | n | int,list | (2,3) |
 | stopwords_remove | boolean | True |
 | lemitize | boolean | False |
-| encoding | string | ‘utf-8’|
 | remove_punctuation | boolean | True |
 | remove_numbers |  boolean | True |
 | case_sensitive |  boolean | False |
 | gibberish_remove |  boolean | True  |
-| split_by | char | *space*  |
 
-### Function 3: `TextQuality`
 
-`extQuality` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output a qualitative summary of the input. The qualitative summary would include the following:
+### Function 3: `text_quality`
+
+`text_quality` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output a qualitative summary of the input. The qualitative summary would include the following:
 
 - Spelling Mistakes: Words spelt wrong/Total words
 - Overall Sentiment: "Positive" or "Negative"
@@ -110,44 +111,14 @@ The function takes in the following arguments:
 
 |Column| Type|
 |---|---|
-| spell_mistake | float |
-| sentiment | string |
+| spell_error | float |
+| toxicity | float |
 
 The function takes in the following arguments:
 
 | Name | Type | Default|
 |---|---|---|
-| encoding | string | ‘utf-8’|
-| split_by | char | *space*  |
-
-### Function 4: `TextTags`
-
-`TextTags` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing a summary of parts of speech tags.
-
-- Number of nouns
-- Number of verbs
-- Number of adjectives
-
-| Name | Type |
-|---|---|
-| Input | String |
-| Output | Dataframe |
-
-#### Output: Dataframe
-
-|Column| Type|
-|---|---|
-| nouns | int |
-| verbs | int |
-| adjectives | int |
-
-The function takes in the following arguments:
-
-| Name | Type | Default|
-|---|---|---|
-| encoding | string | ‘utf-8’|
-| split_by | char | *space*  |
-
+| string | str | NA |
 
 ### R Ecosystem
 
