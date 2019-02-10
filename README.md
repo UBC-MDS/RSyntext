@@ -10,7 +10,7 @@ Team Members
 
 ### Summary
 
-There are many packages that cover summary statistics for numerical data. However, when it comes to text data, there is a lack of selection for packages of similar functionality. Our group would like to tackle this problem by creating `RySyntext`. This package will allow users to input passages and receive summary information and sentiment analysis on the text, giving the user valuable information on how best to proceed with their data.
+There are many packages that cover summary statistics for numerical data. However, when it comes to text data, there is a lack of selection for packages of similar functionality. Our group would like to tackle this problem by creating `RSyntext`. This package will allow users to input passages and receive summary information and sentiment analysis on the text, giving the user valuable information on how best to proceed with their data.
 
 Sample functionality included in this package for a given text passage:
 
@@ -23,7 +23,7 @@ Sample functionality included in this package for a given text passage:
 
 ### Function 1: `text_summarize`
 
-`text_summarize` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing a quantitative summary of the input. The quantitative summary entails the following:
+`text_summarize` function of class `RSyntext` takes in `string` as an input and produces `DataFrame` as an output containing a quantitative summary of the input. The quantitative summary entails the following:
 
 - Number of Words
 - Number of Sentences
@@ -68,7 +68,7 @@ The function takes in the following arguments:
 
 ### Function 2: `text_grams`
 
-`text_grams` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output containing lists of top 5 ngrams. The top `k` ngrams and `n` are user based inputs with default values (k=5 and n=(2,3))
+`text_grams` function of class `RSyntext` takes in `string` as an input and produces `DataFrame` as an output containing lists of top 5 ngrams. The top `k` ngrams and `n` are user based inputs with default values (k=5 and n=(2,3))
 
 <br>
 
@@ -117,7 +117,7 @@ The function takes in the following arguments:
 
 ### Function 3: `text_quality`
 
-`text_quality` function of class `PySyntext` takes in `string` as an input and produces `DataFrame` as an output a qualitative summary of the input. The qualitative summary would include the following:
+`text_quality` function of class `RSyntext` takes in `string` as an input and produces `DataFrame` as an output a qualitative summary of the input. The qualitative summary would include the following:
 
 - Spelling Mistakes: Words spelt wrong/Total words
 - Toxicity: Abusive or Slang words used/ Total Words
