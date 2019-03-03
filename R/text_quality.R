@@ -83,7 +83,7 @@ spell_check <- function(eng_words,txt){
 
     if (length(unlist(strsplit(non_eng_words, split=" ")))!=0){
 
-        remove_nouns=gsub("\\b[A-Z].*?\\b", '',non_eng_words)
+        remove_nouns=gsub("[A-Z]([a-z]+)", '',non_eng_words)
         non_eng_words=str_squish(non_eng_words)
         non_noun_words=str_squish(remove_nouns)
 
