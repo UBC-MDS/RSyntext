@@ -74,27 +74,20 @@ text_summarize <- function(txt,
   split_sentences <- unlist(strsplit(txt, "(?<=[[:punct:]])\\s(?=[A-Z])", perl=T))
   df$sentence_count <- length(split_sentences)
 
+  if(case_sensitive==FALSE){
+    split_sentences <- tolower(split_sentences)}
 
-  split_sentences <- tolower(split_sentences)
-  clean_split_sentences <- clean_text_summarize (split_sentences, remove_punctuation, remove_number, case_sensitive)
+  clean_sentence <- clean_text_summarize(split_sentences, remove_punctuation, remove_number, case_sensitive)
 
   if (stop_remove == TRUE){
-    clean_split_sentences <- pre_processing(clean_split_sentences)
+    clean_sentence <- pre_processing(clean_sentence)
 
   }
 
-  df$avg_sentence_length <- sum(mapply(nchar, clean_split_sentences))/df$sentence_count
+  df$avg_sentence_length <- sum(mapply(nchar, clean_sentence))/df$sentence_count
 
 
-  txtlower <- tolower(txt)
-  clean_text <- clean(txtlower, remove_punctuation, remove_number, case_sensitive)
-
-  if (stop_remove == TRUE){
-    clean_text <- pre_processing(clean_text)
-
-  }
-
-  txt_split <- c(unlist(strsplit(clean_text, split=" ")))
+  txt_split <- c(unlist(strsplit(clean_sentence, split=" ")))
   df$word_count <- length(txt_split)
 
 
@@ -118,7 +111,7 @@ text_summarize <- function(txt,
 
 clean_text_summarize <-  function(txt, rmv_punct, rmv_num, lower_case){
 
-  if (lower_case == TRUE){
+  if (lower_case == FALSE){
     lower = tolower(txt)
   } else {
     lower <- txt
