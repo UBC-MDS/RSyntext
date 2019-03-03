@@ -26,19 +26,15 @@ text_summarize(txt, stop_remove = FALSE, remove_punctuation = TRUE,
   remove_number = TRUE, case_sensitive = FALSE)
 }
 \arguments{
+\item{txt}{string}
+
+\item{stop_remove}{Boolean}
+
 \item{remove_punctuation}{Boolean}
 
+\item{remove_number}{Boolean}
+
 \item{case_sensitive}{Boolean}
-
-\item{text}{string}
-
-\item{stopwords_remove}{Boolean}
-
-\item{lemmatize}{Boolean}
-
-\item{remove_numbers}{Boolean}
-
-\item{gibberish_remove}{Boolean}
 }
 \value{
 data.frame
@@ -65,7 +61,8 @@ Fifth column contains the average word length in \code{text}.
 Sixth column contains the average number of words in a sentence, in \code{text}.
 }
 \examples{
-txt <- "This is the first sentence in this paragraph. This is the second sentence. This is the third."
+txt <- "This is the first sentence in this paragraph.
+        This is the second sentence. This is the third."
 
 summary <- text_summarize(txt)
 }
