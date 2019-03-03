@@ -40,7 +40,7 @@
 text_quality <- function(txt) {
 
 
-  cleaned_text <- clean(txt)
+  cleaned_text <- clean_text_quality(txt)
   spelling_mistakes <- spell_check(en_dictionary[[1]],cleaned_text)
   toxic_content <- toxicity_check(en_dictionary[[2]],cleaned_text)
   quality <- cbind(spelling_mistakes,toxic_content)
@@ -49,7 +49,7 @@ text_quality <- function(txt) {
 
 
 
-clean <-  function(txt){
+clean_text_quality <-  function(txt){
   text="RT $USD @Amila #Test\nTom\'s newly listed Co. &amp; Mary\'s unlisted Group to supply tech for
             nlTK.\nh.. $TSLA $AAPL https://t.co/x34afsfQsh"
   # remove tickers
@@ -83,7 +83,7 @@ spell_check <- function(eng_words,txt){
 
     if (length(unlist(strsplit(non_eng_words, split=" ")))!=0){
 
-        remove_nouns=gsub("\\b[A-Z].*?\\b", '',non_eng_words)
+        remove_nouns=gsub("[A-Z]([a-z]+)", '',non_eng_words)
         non_eng_words=str_squish(non_eng_words)
         non_noun_words=str_squish(remove_nouns)
 

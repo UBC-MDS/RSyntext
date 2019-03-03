@@ -30,7 +30,7 @@ context("Test text_summarize")
 
 # Sample input
 
-text <-  "This is the first sentence in this paragraph. This is the second sentence. This is the third."
+txt <-  "This is the first sentence in this paragraph. This is the second sentence. This is the third."
 
 
 
@@ -40,13 +40,13 @@ df <- data.frame(word_count=17,
 
                  sentence_count=3,
 
-                 most_common = array('This'),
+                 most_common = 'this',
 
-                 least_common = array('first'),
+                 least_common = list('first', 'in', 'paragraph', 'second', 'third'),
 
-                 avg_word_length = 4.35,
+                 avg_word_length = 4.352941,
 
-                 avg_sentence_length = 5.67)
+                 avg_sentence_length = 29.33333)
 
 
 
@@ -80,13 +80,13 @@ test_that("Test that outputs are of the right type", {
 
 
 
-  expect_true(typeof(output$word_count) == "double")
+  expect_true(typeof(output$word_count) == "integer")
 
-  expect_true(typeof(output$sentence_count)=="double")
+  expect_true(typeof(output$sentence_count)=="integer")
 
-  expect_true(typeof(output$most_common)=="character")
+  expect_true(typeof(output$most_common)=="list")
 
-  expect_true(typeof(output$least_common)=="character")
+  expect_true(typeof(output$least_common)=="list")
 
   expect_true(typeof(output$avg_word_len)=="double")
 
@@ -170,15 +170,15 @@ test_that("Test that summarizer gives expected output", {
 
 
 
-  output <- text_summarize(text)
+  output <- text_summarize(txt)
 
 
 
-  expect_true(output$word_count == df$word_count)
+  expect_true(output$word_count == 17)
 
-  expect_true(output$sentence_count == df$sentence_count)
+  expect_true(output$sentence_count == 3)
 
-  expect_true(output$most_common == df$most_common)
+  expect_true(output$most_common == "this")
 
   expect_true(output$least_common == df$least_common)
 
