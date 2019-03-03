@@ -50,22 +50,36 @@
 #' summary <- text_summarize(text)
 
 text_summarize <- function(text) {
-
-  df <- data.frame(word_count=17,
-                   sentence_count=3,
-                   most_common = array('This'),
-                   least_common = array('first'),
-                   avg_word_length = 4.35,
-                   avg_sentence_length = 5.67)
-
-  # dummy output
-  # df <- data.frame(word_count=NA,
-  #                  sentence_count=NA,
-  #                  most_common = NA,
-  #                  least_common = NA,
-  #                  avg_word_length = NA,
-  #                  avg_sentence_length = NA)
-
+  
+  df <- data.frame(word_count=integer(),
+                   sentence_count=integer(),
+                   most_common=character(),
+                   least_common=character(),
+                   avg_word_length=integer())
+  df[nrow(df) + 1,] = list(0,0,'','',0)
+  
+  #text=clean(text)
+  
+  df$word_count=lengths(gregexpr("\\W+", text))
+  
+  df$sentence_count=length(gregexpr('[[:alnum:] ][.!?]', text)[[1]])
+  
+  text_split=c(unlist(strsplit(text, split=" ")))
+  
+  # average word length
+  total=0
+  for (i in 1:length(text_split)){
+    total=total+nchar(text_split[i])
+  }
+  df$avg_word_length= total/length(text_split)
+  
+  # most common word
+  table=sort(table(text_split), decreasing=T)
+  df$most_common=as.vector(list(names(table[table==max(table)])))
+  
+  # least common word
+  df$least_common=as.vector(list(names(table[table==min(table)])))
+  
   return (df)
 
 }
