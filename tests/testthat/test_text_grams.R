@@ -13,7 +13,11 @@ context("Test text_grams")
 
 #' Test for output type
 asdf <-  "Today is a sunny day. We should go to a beach on this sunny day"
-text_grams(asdf)
+text_grams(asdf, k = 5, n = c(2,3),
+           stop_remove = TRUE,
+           remove_punctuation = TRUE,
+           remove_number = TRUE,
+           case_sensitive = FALSE)
 
 
 test_that("Test that output is of type dataframe", {

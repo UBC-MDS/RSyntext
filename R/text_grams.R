@@ -66,8 +66,10 @@ text_grams <- function(txt, k = 5, n = c(2,3),
     ngrams_list <- c()
 
     for (sentence in split_sentences){
-
-      clean_text <- clean(sentence, stop_remove, remove_punctuation, remove_number)
+      clean_text <- clean_text_grams(txt = sentence,
+                          rmv_punct = remove_punctuation,
+                          rmv_num = remove_number,
+                          lower_case = case_sensitive)
 
       if (stop_remove == TRUE){
         clean_text <- pre_processing(clean_text)
@@ -101,36 +103,37 @@ create_grams <- function(sentence, n){
     #print(split_words[i:(i+n-1)])
     list_of_words <- c(list_of_words, paste(split_words[i:(i+n-1)], collapse = " "))
   }
+
   print(list_of_words)
   table(list_of_words)
 }
 
-clean <- function(txt, rmv_punct, rmv_num, lower_case){
+clean_text_grams <- function(txt, rmv_punct, rmv_num, lower_case){
 
   if (lower_case == FALSE){
-    lower = tolower(txt)
+    lower_var <- tolower(txt)
   } else {
-    lower = txt
+    lower_var <- txt
   }
 
   if (rmv_punct == TRUE){
     # remove tickers
-    tickers=gsub("\\$", "", lower)
+    tickers <- gsub("\\$", "", lower_var)
     # remove new line symbol
-    newline = gsub('\n','', tickers)
+    newline <-  gsub('\n','', tickers)
     # remove links
-    links=gsub('http\\S+\\s*','', newline)
+    links <- gsub('http\\S+\\s*','', newline)
     # remove special characters
-    punctuation=gsub("[[:punct:]]", ' ', links)
+    punctuation <- gsub("[[:punct:]]", ' ', links)
   } else {
-    punctuation = txt
+    punctuation <-  lower
   }
 
   if (rmv_num == TRUE){
     # remove numerical strings
-    numeric_words= gsub("\\b\\d+\\b", '',punctuation)
+    numeric_words <-  gsub("\\b\\d+\\b", '',punctuation)
   } else {
-    numeric_words = punctuation
+    numeric_words <-  punctuation
   }
 
   clean_text <- str_squish(numeric_words)
