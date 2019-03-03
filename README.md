@@ -1,6 +1,6 @@
 # RSyntext
 
-<img src="img/logo.PNG" align="right" height="150" width="150"/>
+<img src="img\image_logo.PNG" align="right" height="150" width="150"/>
 
 Text Summarization in R
 
