@@ -25,13 +25,11 @@
 
 #'
 
-#' @param text string
-#' @param stopwords_remove Boolean
-#' @param lemmatize Boolean
+#' @param txt string
+#' @param stop_remove Boolean
 #' @param remove_punctuation Boolean
-#' @param remove_numbers Boolean
+#' @param remove_number Boolean
 #' @param case_sensitive Boolean
-#' @param gibberish_remove Boolean
 #'
 #' @import stringr
 #' @import tm
@@ -44,7 +42,8 @@
 
 #' @examples
 
-#' txt <- "This is the first sentence in this paragraph. This is the second sentence. This is the third."
+#' txt <- "This is the first sentence in this paragraph.
+#'         This is the second sentence. This is the third."
 
 #'
 
@@ -117,7 +116,7 @@ clean_text_summarize <-  function(txt, rmv_punct, rmv_num, lower_case){
     lower <- txt
   }
 
-  if (rmv_punct <- TRUE){
+  if (rmv_punct == TRUE){
     # remove tickers
     tickers <- gsub("\\$", "", lower)
     # remove new line symbol
@@ -127,7 +126,7 @@ clean_text_summarize <-  function(txt, rmv_punct, rmv_num, lower_case){
     # remove special characters
     punctuation <- gsub("[[:punct:]]", ' ', links)
   } else {
-    punctuation <-  txt
+    punctuation <-  lower
   }
 
   if (rmv_num == TRUE){

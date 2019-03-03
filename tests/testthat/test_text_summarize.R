@@ -185,20 +185,20 @@ test_that("Test that summarizer gives expected output", {
 
 
   least_common_list <- list(0)
-  least_common_list [[1]] <- c('first', 'paragraph', 'second', 'third')
+  least_common_list [[1]] <- c('first', 'paragraph.', 'second', 'sentence', 'sentence.', 'third.')
 
-  expect_true(output$word_count == 6)
+  expect_true(output$word_count == 9)
 
   expect_true(output$sentence_count == 3)
 
-  expect_true(output$most_common == "sentence")
+  expect_true(output$most_common == "This")
 
   expect_true(all.equal(c(output$least_common[[1]]),c(least_common_list[[1]])))
 
-  expect_true(output$avg_word_len>= 6.833333-0.5 &
-                output$avg_word_len<= 6.833333+0.5  )
+  expect_true(output$avg_word_len>= 6.222222-0.5 &
+                output$avg_word_len<= 6.222222+0.5  )
 
-  expect_true(output$avg_sentence_len>=14.66667-0.5 &
-                output$avg_sentence_len<=14.66667+0.5  )
+  expect_true(output$avg_sentence_len>=20.66667-0.5 &
+                output$avg_sentence_len<=20.66667+0.5  )
 
 })

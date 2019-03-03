@@ -17,7 +17,7 @@
 
 #'
 
-#' @param text string
+#' @param txt string
 
 #'
 
@@ -31,11 +31,11 @@
 
 #' @examples
 
-#' text <- "This str has words spelllll wrong. This string has a slag word shitty."
+#' txt <- "This str has words spelllll wrong. This string has a slag word shitty."
 
 #'
 
-#' quality <- text_quality(text)
+#' quality <- text_quality(txt)
 
 text_quality <- function(txt) {
 
