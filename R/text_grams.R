@@ -248,7 +248,7 @@ clean_text_grams <- function(txt, rmv_punct, rmv_num, lower_case){
 
   } else {
 
-    punctuation = txt
+    punctuation <-  lower
 
   }
 
