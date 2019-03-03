@@ -22,79 +22,42 @@ context("Test text_grams")
 
 #'
 
-<<<<<<< HEAD
-#' Test for output type
-asdf <-  "Today is a sunny day. We should go to a beach on this sunny day"
-text_grams(asdf, k = 5, n = c(2,3),
-           stop_remove = TRUE,
-           remove_punctuation = TRUE,
-           remove_number = TRUE,
-           case_sensitive = FALSE)
-
-=======
 
 
 #' Test for output type
 
 asdf <-  "Today is a sunny day. We should go to a beach on this sunny day"
-
 text_grams(asdf)
 
 
-
-
-
-test_that("Test that output is of type dataframe", {
-
-  txt <-  "Today is a sunny day. We should go to a beach on this sunny day"
-
-  expect_true(class(text_grams(txt)) == "data.frame")
->>>>>>> origin
-
 test_that("Test that output is of type dataframe", {
   txt <-  "Today is a sunny day. We should go to a beach on this sunny day"
   expect_true(class(text_grams(txt)) == "data.frame")
 })
-
-
 
 #' Test for values returned in the dataframe
-
 test_that("Test that outputs are of the right type", {
-<<<<<<< HEAD
   txt <-  "Today is a sunny day. We should go to a beach on this sunny day"
   output <- text_grams(txt)
   expect_true(class(output$'2_gram')=="factor")
-=======
-
-  txt <-  "Today is a sunny day. We should go to a beach on this sunny day"
-
-  output <- text_grams(txt)
-
-  expect_true(class(output$'2_gram')=="factor")
-
->>>>>>> origin
 })
-
-
-
 
 
 #' Test for length of dataframe matches argument passed
-
 test_that("Test that output matches arguments passed", {
-<<<<<<< HEAD
   txt <-  "Today is a sunny day. We should go to a beach on this sunny day"
   output <- text_grams(txt)
   expect_true(dim(output)[1]==5)
+  expect_true(dim(output)[2]==4)
 })
 
 test_that("Test normal function", {
   txt <-  "Today is a sunny day. We should go to a beach on this sunny day."
   output <- text_grams(txt)
-  print(output)
-  expect_true(output[[2]][[1]] == 1)
+  expect_true(output[[2]][[1]] == 2)
+  expect_true(output[[4]][[1]] == 1)
 })
+
 
 test_that("Test normal function for full branch coverage", {
   txt <-  "Today is a Sunny day. We should go to a beach on this sunny day"
@@ -103,51 +66,5 @@ test_that("Test normal function for full branch coverage", {
                        remove_punctuation = FALSE,
                        remove_number = FALSE,
                        case_sensitive = TRUE)
-  print(output)
   expect_true(output[[2]][[1]] == 1)
-=======
-
-  txt <-  "Today is a sunny day. We should go to a beach on this sunny day"
-
-  output <- text_grams(txt)
-
-  expect_true(dim(output)[1]==5)
-
-})
-
-
-
-test_that("Test normal function", {
-
-  txt <-  "Today is a sunny day. We should go to a beach on this sunny day."
-
-  output <- text_grams(txt)
-
-  print(output)
-
-  expect_true(output[[2]][[1]] == 1)
-
-})
-
-
-
-test_that("Test normal function for full branch coverage", {
-
-  txt <-  "Today is a Sunny day. We should go to a beach on this sunny day"
-
-  output <- text_grams(txt,
-
-                       stop_remove = FALSE,
-
-                       remove_punctuation = FALSE,
-
-                       remove_number = FALSE,
-
-                       case_sensitive = TRUE)
-
-  print(output)
-
-  expect_true(output[[2]][[1]] == 1)
-
->>>>>>> origin
 })
