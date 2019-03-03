@@ -1,81 +1,109 @@
 context("Test text_grams")
 
+
+
 #'
+
+
 
 #' This script tests the text_grams function of the RSyntext package.
+
 #'
+
 #'
+
 #' The text_grams function of the RSyntext package checks the
+
 #' gives various summary information about the input string
+
 #' It takes in a string as input and returns a dataframe.
+
 #' The function performs necessary cleaning on the input string.
+
 #'
-
-
-
-# Sample input
-text <-  "Today is a sunny day. We should go to a beach on this sunny day"
-k=1
-n=2
-
-# sample output
-df <- data.frame(bigrams=('sunny,day'))
 
 
 
 #' Test for output type
 
+asdf <-  "Today is a sunny day. We should go to a beach on this sunny day"
+
+text_grams(asdf)
+
+
+
+
+
 test_that("Test that output is of type dataframe", {
 
-  expect_true(class(text_grams(text))=="data.frame")
+  txt <-  "Today is a sunny day. We should go to a beach on this sunny day"
+
+  expect_true(class(text_grams(txt)) == "data.frame")
 
 })
+
+
 
 #' Test for values returned in the dataframe
+
 test_that("Test that outputs are of the right type", {
 
-  output <- text_grams(text)
+  txt <-  "Today is a sunny day. We should go to a beach on this sunny day"
 
+  output <- text_grams(txt)
 
-  expect_true(typeof(output$bigrams)=="character")
+  expect_true(class(output$'2_gram')=="factor")
 
 })
+
+
+
 
 
 #' Test for length of dataframe matches argument passed
+
 test_that("Test that output matches arguments passed", {
 
-  output <- text_grams(text)
+  txt <-  "Today is a sunny day. We should go to a beach on this sunny day"
 
-  expect_true(dim(output)[1]==n-1)
-})
+  output <- text_grams(txt)
 
-
-#' Test for valid input
-test_that("Input should be a string", {
-
-  text <- 123
-
-  expect_error(text_grams(text))
+  expect_true(dim(output)[1]==5)
 
 })
 
 
-#' Test for valid input
-test_that("Input should be a string", {
 
-  text <- ""
+test_that("Test normal function", {
 
-  expect_error(text_grams(text))
+  txt <-  "Today is a sunny day. We should go to a beach on this sunny day."
+
+  output <- text_grams(txt)
+
+  print(output)
+
+  expect_true(output[[2]][[1]] == 1)
 
 })
 
 
-#' Test for functionality
-test_that("Test that functions gives the required output", {
 
-  output <- text_grams(text)
+test_that("Test normal function for full branch coverage", {
 
-  expect_true(output$bigrams == df$bigrams)
+  txt <-  "Today is a Sunny day. We should go to a beach on this sunny day"
+
+  output <- text_grams(txt,
+
+                       stop_remove = FALSE,
+
+                       remove_punctuation = FALSE,
+
+                       remove_number = FALSE,
+
+                       case_sensitive = TRUE)
+
+  print(output)
+
+  expect_true(output[[2]][[1]] == 1)
+
 })
-
