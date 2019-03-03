@@ -13,26 +13,24 @@ Takes in a string and returns a data.frame
 Number of rows are dependent on the input n of the user
 Size of the list is dependent on the input k of the user}
 \usage{
-text_grams(text)
+text_grams(txt, k = 5, n = c(2, 3), stop_remove = TRUE,
+  remove_punctuation = TRUE, remove_number = TRUE,
+  case_sensitive = FALSE)
 }
 \arguments{
-\item{text}{string}
+\item{txt}{string}
 
 \item{k}{top ngrams}
 
 \item{n}{n combination of words}
 
-\item{stopwords_remove}{Boolean}
-
-\item{lemmatize}{Boolean}
+\item{stop_remove}{Boolean}
 
 \item{remove_punctuation}{Boolean}
 
-\item{remove_numbers}{Boolean}
+\item{remove_number}{Boolean}
 
 \item{case_sensitive}{Boolean}
-
-\item{gibberish_remove}{Boolean}
 }
 \value{
 data.frame
@@ -50,7 +48,7 @@ Number of rows are dependent on the input n of the user
 Size of the list is dependent on the input k of the user
 }
 \examples{
-text <-  "Today is a sunny day. We should go to a beach on this sunny day"
+txt <-  "Today is a sunny day. We should go to a beach on this sunny day"
 
-grams<- text_grams(text)
+grams<- text_grams(txt)
 }
