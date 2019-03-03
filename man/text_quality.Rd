@@ -17,7 +17,7 @@ contains and the second column storestoxicity in the the input string.}
 text_quality(txt)
 }
 \arguments{
-\item{text}{string}
+\item{txt}{string}
 }
 \value{
 data.frame
@@ -36,7 +36,7 @@ First column contains proportion of spelling errors in the input
 contains and the second column storestoxicity in the the input string.
 }
 \examples{
-text <- "This str has words spelllll wrong. This string has a slag word shitty."
+txt <- "This str has words spelllll wrong. This string has a slag word shitty."
 
-quality <- text_quality(text)
+quality <- text_quality(txt)
 }
