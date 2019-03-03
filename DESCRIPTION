@@ -16,4 +16,5 @@ Suggests:
     testthat,
     MASS
 Imports: 
-    stringr
+    stringr,
+    tm

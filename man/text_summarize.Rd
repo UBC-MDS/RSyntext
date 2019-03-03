@@ -22,20 +22,21 @@ the least number of times in \code{text}.
 Fifth column contains the average word length in \code{text}.
 Sixth column contains the average number of words in a sentence, in \code{text}.}
 \usage{
-text_summarize(text)
+text_summarize(txt, stop_remove = FALSE, remove_punctuation = TRUE,
+  remove_number = TRUE, case_sensitive = FALSE)
 }
 \arguments{
+\item{remove_punctuation}{Boolean}
+
+\item{case_sensitive}{Boolean}
+
 \item{text}{string}
 
 \item{stopwords_remove}{Boolean}
 
 \item{lemmatize}{Boolean}
 
-\item{remove_punctuation}{Boolean}
-
 \item{remove_numbers}{Boolean}
-
-\item{case_sensitive}{Boolean}
 
 \item{gibberish_remove}{Boolean}
 }
@@ -64,7 +65,7 @@ Fifth column contains the average word length in \code{text}.
 Sixth column contains the average number of words in a sentence, in \code{text}.
 }
 \examples{
-text <- "This is the first sentence in this paragraph. This is the second sentence. This is the third."
+txt <- "This is the first sentence in this paragraph. This is the second sentence. This is the third."
 
-summary <- text_summarize(text)
+summary <- text_summarize(txt)
 }
