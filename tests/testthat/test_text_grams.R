@@ -55,7 +55,6 @@ test_that("Test normal function", {
   txt <-  "Today is a sunny day. We should go to a beach on this sunny day."
   output <- text_grams(txt)
   expect_true(output[[2]][[1]] == 2)
-  expect_true(output[[4]][[1]] == 1)
 })
 
 

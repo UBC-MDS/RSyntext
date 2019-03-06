@@ -180,7 +180,7 @@ test_that("Test that summarizer gives expected output", {
 
   expect_true(output$most_common == "this")
 
-  expect_true(output$least_common == df$least_common)
+  expect_true(output$least_common == list('first', 'in', 'paragraph', 'second', 'third'))
 
   expect_true(output$avg_word_len == df$avg_word_len)
 

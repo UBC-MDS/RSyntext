@@ -92,7 +92,7 @@
 
 
 
-text_grams <- function(txt, k = 5, n = c(2,3),
+text_grams <- function(txt, k = 5, n = c(2),
                        stop_remove = TRUE,
                        remove_punctuation = TRUE,
                        remove_number = TRUE,

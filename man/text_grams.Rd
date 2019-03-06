@@ -13,7 +13,7 @@ Takes in a string and returns a data.frame
 Number of rows are dependent on the input n of the user
 Size of the list is dependent on the input k of the user}
 \usage{
-text_grams(txt, k = 5, n = c(2, 3), stop_remove = TRUE,
+text_grams(txt, k = 5, n = c(2), stop_remove = TRUE,
   remove_punctuation = TRUE, remove_number = TRUE,
   case_sensitive = FALSE)
 }
