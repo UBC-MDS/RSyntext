@@ -34,25 +34,6 @@ txt <-  "This is the first sentence in this paragraph. This is the second senten
 
 
 
-# sample output
-
-df <- data.frame(word_count=17,
-
-                 sentence_count=3,
-
-                 most_common = 'this',
-
-                 least_common = list('first', 'in', 'paragraph', 'second', 'third'),
-
-                 avg_word_length = 4.352941,
-
-                 avg_sentence_length = 29.33333)
-
-
-
-
-
-
 
 #' Test for output type
 
@@ -62,7 +43,7 @@ test_that("Test that output is of type dataframe", {
 
 
 
-  expect_true(class(text_summarize(text))=="data.frame")
+  expect_true(class(text_summarize(txt))=="data.frame")
 
 
 
@@ -76,7 +57,7 @@ test_that("Test that outputs are of the right type", {
 
 
 
-  output <- text_summarize(text)
+  output <- text_summarize(txt)
 
 
 
@@ -106,7 +87,7 @@ test_that("Test that output contains non-negative values", {
 
 
 
-  output <- text_summarize(text)
+  output <- text_summarize(txt)
 
 
 
@@ -130,11 +111,11 @@ test_that("Input should be a string", {
 
 
 
-  text <- 123
+  txt <- 123
 
 
 
-  expect_error(text_summarize(text))
+  expect_error(text_summarize(txt))
 
 
 
@@ -150,11 +131,11 @@ test_that("Input should be a string", {
 
 
 
-  text <- ""
+  txt <- ""
 
 
 
-  expect_error(text_summarize(text))
+  expect_error(text_summarize(txt))
 
 
 
@@ -172,7 +153,8 @@ test_that("Test that summarizer gives expected output", {
 
   output <- text_summarize(txt)
 
-
+  least_common_list <- list(0)
+  least_common_list [[1]] <- c('first', 'in', 'paragraph', 'second', 'third')
 
   expect_true(output$word_count == 17)
 
@@ -180,10 +162,43 @@ test_that("Test that summarizer gives expected output", {
 
   expect_true(output$most_common == "this")
 
-  expect_true(output$least_common == list('first', 'in', 'paragraph', 'second', 'third'))
+  expect_true(all.equal(c(output$least_common[[1]]),c(least_common_list[[1]])))
 
-  expect_true(output$avg_word_len == df$avg_word_len)
+  expect_true(output$avg_word_len>= 4.352941-0.5 &
+              output$avg_word_len<= 4.352941+0.5  )
 
-  expect_true(output$avg_sentence_len == df$avg_sentence_len)
+  expect_true(output$avg_sentence_len>=29.33333-0.5 &
+                output$avg_sentence_len<=29.33333+0.5  )
+
+})
+
+
+test_that("Test that summarizer gives expected output", {
+
+
+
+  output <- text_summarize(txt,
+                           stop_remove = TRUE,
+                           remove_punctuation = FALSE,
+                           remove_number = FALSE,
+                           case_sensitive = TRUE)
+
+
+  least_common_list <- list(0)
+  least_common_list [[1]] <- c('first', 'paragraph.', 'second', 'sentence', 'sentence.', 'third.')
+
+  expect_true(output$word_count == 9)
+
+  expect_true(output$sentence_count == 3)
+
+  expect_true(output$most_common == "This")
+
+  expect_true(all.equal(c(output$least_common[[1]]),c(least_common_list[[1]])))
+
+  expect_true(output$avg_word_len>= 6.222222-0.5 &
+                output$avg_word_len<= 6.222222+0.5  )
+
+  expect_true(output$avg_sentence_len>=20.66667-0.5 &
+                output$avg_sentence_len<=20.66667+0.5  )
 
 })
