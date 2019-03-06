@@ -2,18 +2,9 @@
 % Please edit documentation in R/text_grams.R
 \name{text_grams}
 \alias{text_grams}
-\title{Created on 09 February, 2019
-auuthor: Harjyot Kaur
-Implementation of text_grams function in the RySyntext package.
-This function returns a DataFrame with k top ngrams.
-ngrams is a combination of n words occuring together with
-highest frequency in the text. The function will return multiple
-values in cases of frequency conflict.
-Takes in a string and returns a data.frame
-Number of rows are dependent on the input n of the user
-Size of the list is dependent on the input k of the user}
+\title{Create n-grams from text}
 \usage{
-text_grams(txt, k = 5, n = c(2), stop_remove = TRUE,
+text_grams(txt, k = 5, n = c(2, 3), stop_remove = TRUE,
   remove_punctuation = TRUE, remove_number = TRUE,
   case_sensitive = FALSE)
 }
@@ -36,13 +27,15 @@ text_grams(txt, k = 5, n = c(2), stop_remove = TRUE,
 data.frame
 }
 \description{
-Created on 09 February, 2019
-auuthor: Harjyot Kaur
-Implementation of text_grams function in the RySyntext package.
-This function returns a DataFrame with k top ngrams.
-ngrams is a combination of n words occuring together with
+This function returns a DataFrame with \code{k`` top ngrams. }ngrams`` is a combination of n words occuring together with
 highest frequency in the text. The function will return multiple
 values in cases of frequency conflict.
+}
+\details{
+Created on 09 February, 2019
+
+Authors: Harjyot Kaur, Alexander Pak
+
 Takes in a string and returns a data.frame
 Number of rows are dependent on the input n of the user
 Size of the list is dependent on the input k of the user

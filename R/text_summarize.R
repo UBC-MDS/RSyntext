@@ -1,30 +1,34 @@
-#' Created on 09 February, 2019
-#' Implementation of text_summarize function in the RySyntext package.
-
-
+#' Summarize the key points from input text
+#'
 #' This function returns a DataFrame with total word count,
 #' total sentence count, most common and least common word, average
 #' word length, and average sentence length. Each information resides
 #' in a separate column.
-
-
-#' Takes in a string and returns a data.frame with one row and six columns.
+#'
+#' Created on 09 February, 2019
+#'
+#' Authors: Harjyot Kaur
+#'
+#' Takes in a string and returns a data.frame with one row and six columns:
+#'
 #' First column contains the total word count of the string.
+#'
 #' Second column contains the total number of sentences in `text`.
+#'
 #' Third column contains a list of the most common words in `text`. If this returns a
 #'   list of length 1, there is only one most common word. If this
 #'   returns a list of length > 1, there are multiple words that appear
 #'   the most number of times in `text`.
+#'
 #' Fourth column contains a list of the least common words in `text`.
 #'   If this returns a list of length 1, there is only one least common word.
 #'   If this returns a list of length > 1, there are multiple words that appear
 #'   the least number of times in `text`.
-#' Fifth column contains the average word length in `text`.
-#' Sixth column contains the average number of words in a sentence, in `text`.
-
-
 #'
-
+#' Fifth column contains the average word length in `text`.
+#'
+#' Sixth column contains the average number of words in a sentence, in `text`.
+#'
 #' @param txt string
 #' @param stop_remove Boolean
 #' @param remove_punctuation Boolean
@@ -33,20 +37,15 @@
 #'
 #' @import stringr
 #' @import tm
-
-#' @return data.frame
-
-#' @export
-
 #'
-
+#' @return data.frame
+#'
+#' @export
+#'
 #' @examples
-
 #' txt <- "This is the first sentence in this paragraph.
 #'         This is the second sentence. This is the third."
-
 #'
-
 #' summary <- text_summarize(txt)
 
 
@@ -56,8 +55,15 @@ text_summarize <- function(txt,
                            remove_number = TRUE,
                            case_sensitive = FALSE) {
 
+  # Check if conditions are boolean
+  if (!is.logical(stop_remove) |
+      !is.logical(remove_punctuation) |
+      !is.logical(remove_number) |
+      !is.logical(case_sensitive)){
+    stop("Conditions are not Boolean.")
+  }
 
-
+  # Initialize the final dataframe
   df <- data.frame(word_count=integer(),
                    sentence_count=integer(),
                    most_common=character(),
@@ -66,18 +72,27 @@ text_summarize <- function(txt,
                    avg_sentence_length=integer(),
                    stringsAsFactors=FALSE)
 
-
   df[nrow(df) + 1,] = list(0,0,"","",0)
 
+  # Check if input is not the proper type
+  result = tryCatch({
+    # Split text into sentences
+    split_sentences <- unlist(strsplit(txt, "(?<=[[:punct:]])\\s(?=[A-Z])", perl=T))
+    split_sentences
+  }, error = function(e) {
+    stop("The input must be a string.")
+  })
 
-  split_sentences <- unlist(strsplit(txt, "(?<=[[:punct:]])\\s(?=[A-Z])", perl=T))
   df$sentence_count <- length(split_sentences)
 
+  # Change the text if case sensitivity is false
   if(case_sensitive==FALSE){
     split_sentences <- tolower(split_sentences)}
 
+  # Clean sentence according to conditions
   clean_sentence <- clean_text_summarize(split_sentences, remove_punctuation, remove_number, case_sensitive)
 
+  # Remove stopwords if necessary
   if (stop_remove == TRUE){
     clean_sentence <- pre_processing(clean_sentence)
 
@@ -107,7 +122,7 @@ text_summarize <- function(txt,
 }
 
 
-
+# Helper function that cleans the input text
 clean_text_summarize <-  function(txt, rmv_punct, rmv_num, lower_case){
 
   if (lower_case == FALSE){
@@ -140,6 +155,8 @@ clean_text_summarize <-  function(txt, rmv_punct, rmv_num, lower_case){
   return (clean_text)
 }
 
+
+# Helper function to remove stopwords
 pre_processing <- function(txt){
   stopwords_regex <-  paste(stopwords('en'), collapse = '\\b|\\b')
   stopwords_regex <-  paste0('\\b', stopwords_regex, '\\b')
