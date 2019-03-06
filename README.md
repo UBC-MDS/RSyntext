@@ -14,9 +14,11 @@ Text Summarization in R
 | Yenan Zhang |[YenanZ](https://github.com/YenanZ)  |
 
 
-## Successful build
+## Successful Travis build
 
 [![Build Status](https://travis-ci.org/UBC-MDS/RSyntext.svg?branch=master)](https://travis-ci.org/UBC-MDS/RSyntext)
+
+Please see the succesful build under Build History
 
 ### Summary
 
