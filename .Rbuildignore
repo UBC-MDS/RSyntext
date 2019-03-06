@@ -4,3 +4,5 @@
 ^\.Rproj\.user$
 ^CONDUCT\.md$
 ^CONTRIBUTION\.md$
+^\.travis\.yml$
+^img$

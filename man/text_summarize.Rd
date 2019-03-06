@@ -2,25 +2,7 @@
 % Please edit documentation in R/text_summarize.R
 \name{text_summarize}
 \alias{text_summarize}
-\title{Created on 09 February, 2019
-Implementation of text_summarize function in the RySyntext package.
-This function returns a DataFrame with total word count,
-total sentence count, most common and least common word, average
-word length, and average sentence length. Each information resides
-in a separate column.
-Takes in a string and returns a data.frame with one row and six columns.
-First column contains the total word count of the string.
-Second column contains the total number of sentences in \code{text}.
-Third column contains a list of the most common words in \code{text}. If this returns a
-list of length 1, there is only one most common word. If this
-returns a list of length > 1, there are multiple words that appear
-the most number of times in \code{text}.
-Fourth column contains a list of the least common words in \code{text}.
-If this returns a list of length 1, there is only one least common word.
-If this returns a list of length > 1, there are multiple words that appear
-the least number of times in \code{text}.
-Fifth column contains the average word length in \code{text}.
-Sixth column contains the average number of words in a sentence, in \code{text}.}
+\title{Summarize the key points from input text}
 \usage{
 text_summarize(txt, stop_remove = FALSE, remove_punctuation = TRUE,
   remove_number = TRUE, case_sensitive = FALSE)
@@ -40,24 +22,34 @@ text_summarize(txt, stop_remove = FALSE, remove_punctuation = TRUE,
 data.frame
 }
 \description{
-Created on 09 February, 2019
-Implementation of text_summarize function in the RySyntext package.
 This function returns a DataFrame with total word count,
 total sentence count, most common and least common word, average
 word length, and average sentence length. Each information resides
 in a separate column.
-Takes in a string and returns a data.frame with one row and six columns.
+}
+\details{
+Created on 09 February, 2019
+
+Authors: Harjyot Kaur
+
+Takes in a string and returns a data.frame with one row and six columns:
+
 First column contains the total word count of the string.
+
 Second column contains the total number of sentences in \code{text}.
+
 Third column contains a list of the most common words in \code{text}. If this returns a
 list of length 1, there is only one most common word. If this
 returns a list of length > 1, there are multiple words that appear
 the most number of times in \code{text}.
+
 Fourth column contains a list of the least common words in \code{text}.
 If this returns a list of length 1, there is only one least common word.
 If this returns a list of length > 1, there are multiple words that appear
 the least number of times in \code{text}.
+
 Fifth column contains the average word length in \code{text}.
+
 Sixth column contains the average number of words in a sentence, in \code{text}.
 }
 \examples{

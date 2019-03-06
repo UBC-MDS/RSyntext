@@ -1,72 +1,72 @@
-#' Created on 09 February, 2019
-#' Implementation of text_quality function in the RySyntext package.
-
-
+#' Check quality and toxicity of an input string
+#'
 #' Check quality of the string in terms of spelling errors and toxicity content.
 #' The function performs necessary cleaning on the input string.
-
-#'Comparison is done with pre-existing list of
-#'exhaustive english words to calculate the spelling errors in the string.
-#'Comparison is done with pre-existing list of
-#'exhaustive toxic-english words to calculate the toxicity in the string.
-
-
+#'
+#' Created on 09 February, 2019
+#'
+#' Authors: Harjyot Kaur
+#'
+#' Comparison is done with pre-existing list of
+#' exhaustive english words to calculate the spelling errors in the string.
+#' Comparison is done with pre-existing list of
+#' exhaustive toxic-english words to calculate the toxicity in the string.
+#'
 #' Takes in a string and returns a data.frame with one row and two columns
 #' First column contains proportion of spelling errors in the input
 #' contains and the second column storestoxicity in the the input string.
-
 #'
-
 #' @param txt string
-
 #'
-
 #' @return data.frame
 #'
 #' @import stringr
-
 #' @export
-
 #'
-
 #' @examples
-
 #' txt <- "This str has words spelllll wrong. This string has a slag word shitty."
-
 #'
-
 #' quality <- text_quality(txt)
 
 text_quality <- function(txt) {
 
+  if (!is.character(txt)){stop("Input text must be a string.")}
 
+  # Go through text cleaning before running quality check
   cleaned_text <- clean_text_quality(txt)
   spelling_mistakes <- spell_check(en_dictionary[[1]],cleaned_text)
   toxic_content <- toxicity_check(en_dictionary[[2]],cleaned_text)
+
+  # Run quality check
   quality <- cbind(spelling_mistakes,toxic_content)
+
+
   return (quality)
 }
 
 
-
+# Helper function that cleans the text
 clean_text_quality <-  function(txt){
   text="RT $USD @Amila #Test\nTom\'s newly listed Co. &amp; Mary\'s unlisted Group to supply tech for
             nlTK.\nh.. $TSLA $AAPL https://t.co/x34afsfQsh"
-  # remove tickers
+  # Remove tickers
   remove_tickers=gsub("\\$", "", txt)
-  # remove new line symbol
+  # Remove new line symbol
   remove_newline = gsub('\n','',remove_tickers)
-  # remove links
+  # Remove links
   remove_links=gsub('http\\S+\\s*','',remove_newline)
-  # remove special characters
+  # Remove special characters
   remove_punctuation=gsub("[[:punct:]]", ' ', remove_links)
-  # remove numerical strings
+  # Remove numerical strings
   remove_numeric_words= gsub("\\b\\d+\\b", '',remove_punctuation)
   clean_text <- str_squish(remove_numeric_words)
+
+
   return (clean_text)
 }
 
 
+# Checks the spelling of the input words
 spell_check <- function(eng_words,txt){
   spell_error_df <- data.frame(spell_error=character(),
                                count_spell_error=integer(),

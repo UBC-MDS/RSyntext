@@ -11,6 +11,11 @@ context("Test text_quality")
 #' The function performs necessary cleaning on the input string.
 #'
 
+# Test for correct input type
+test_that("Test that error handling is working for input text", {
+  txt <-  123
+  expect_error(text_quality(txt))
+})
 
 
 #' Test for output type
