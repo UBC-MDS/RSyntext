@@ -13,6 +13,11 @@ Text Summarization in R
 | Alexander Pak | [pak-alex](https://github.com/pak-alex) |
 | Yenan Zhang |[YenanZ](https://github.com/YenanZ)  |
 
+
+## Successful build
+
+[![Build Status](https://travis-ci.org/UBC-MDS/RSyntext.svg?branch=master)](https://travis-ci.org/UBC-MDS/RSyntext)
+
 ### Summary
 
 There are many packages that cover summary statistics for numerical data. However, when it comes to text data, there is a lack of selection for packages of similar functionality. Our group would like to tackle this problem by creating `RSyntext`.  This package will allow users to input passages and receive summary information and quality analysis of the text, giving the user valuable information on how best to proceed with their data.
