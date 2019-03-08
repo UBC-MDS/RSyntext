@@ -1,7 +1,7 @@
 Package: RSyntext
 Title: Summarize text data
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R:
     person(given = "Harjyot",
            family = "Kaur",
            role = c("aut", "cre"),
@@ -18,7 +18,7 @@ Suggests:
     MASS,
     knitr,
     rmarkdown
-Imports: 
+Imports:
     stringr,
     tm
 VignetteBuilder: knitr

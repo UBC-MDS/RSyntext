@@ -86,7 +86,7 @@ text_grams <- function(txt, k = 5, n = c(2,3),
       ngrams_list <- c(ngrams_list, create_grams(clean_text, n[i]))
     }
     # Combine the tables together to make a final table with frequencies of all grams
-    if (!is.na(ngrams_list)){
+    if (!is.na(ngrams_list[[1]])){
       ngrams_list <- table(ngrams_list)
 
       temp <- sort(ngrams_list, decreasing = T)[1:k]

@@ -1,0 +1,54 @@
+---
+title: "RSyntext Vignette"
+author: "Alexander Pak, Harjyot Kaur, Yenan Zhang"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{RSyntext Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+## Package Info
+
+RSyntext is a package that provides high level summary statistics for input text. Its functions are made to be robust and are written in such a way that special characters or outliers in the text will not break expected behaviour. Functions contain parameters that provide the ability to clean input text, remove stopwords, etc. 
+
+## Included Functions
+
+`text_summarize()` : Provides total word count, total sentence count, most common + least common words, average word length, and average number of words per sentence
+`text_quality()` : Provides the number of spelling errors in input text, as well as the presence of toxic words
+`text_grams()` : Provides the most frequent n-grams in input text
+
+
+## Example Use Cases
+
+Below are example inputs and outputs for RSyntext. 
+
+```{r}
+suppressWarnings(library(RSyntext))
+```
+```{r}
+example <- "I don’t care what they’re going to say. Let the storm rage on. The cold never bothered me anyway."
+
+knitr::kable(text_summarize(example))
+```
+```{r}
+example2 <- "This str has words spelllll wrong. This string has a slag word shitty."
+
+knitr::kable(text_quality(example2))
+```
+```{r}
+example3 <- "You can stand under my umbrella, You can stand under my umbrella, Under my umbrella, Under my umbrella, Under my umbrella"
+
+knitr::kable(text_grams(example3))
+```
+
