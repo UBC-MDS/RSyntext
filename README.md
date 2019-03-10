@@ -1,26 +1,18 @@
+<img src="img/RSyntext_logo.PNG" width="200" align = "right">
+
 # RSyntext
-
-<img src="img\image_logo.PNG" align="right" height="150" width="150"/>
-
-Text Summarization in R
-
-
-## Contributors
-
-|Name | Github |
-|---|---|
-| Harjyot Kaur |[harjyotkaur](https://github.com/HarjyotKaur)  |
-| Alexander Pak | [pak-alex](https://github.com/pak-alex) |
-| Yenan Zhang |[YenanZ](https://github.com/YenanZ)  |
-
-
-## Successful Travis build
 
 [![Build Status](https://travis-ci.org/UBC-MDS/RSyntext.svg?branch=master)](https://travis-ci.org/UBC-MDS/RSyntext)
 
-Please see the succesful build under Build History
+Text Summarization in R
 
-### Summary
+### Contributors
+
+| [Harjyot Kaur](https://github.com/HarjyotKaur) | [Alexander Pak](https://github.com/pak-alex) | [Yenan Zhang](https://github.com/YenanZ)|
+|:------------:|:--------------:|:--------------:|
+
+
+### Overview
 
 There are many packages that cover summary statistics for numerical data. However, when it comes to text data, there is a lack of selection for packages of similar functionality. Our group would like to tackle this problem by creating `RSyntext`.  This package will allow users to input passages and receive summary information and quality analysis of the text, giving the user valuable information on how best to proceed with their data.
 
@@ -39,10 +31,13 @@ Sample functionality included in this package for a given text passage:
 
  * Open RStudio and in the console type
 
- `devtools::install_github("ubc-mds/RSyntext")`
+ `devtools::install_github("UBC-MDS/RSyntext", build_opts = c("--no-resave-data", "--no-manual"))`
 
 *Note: Make sure packages such as "Rcpp" and "slam" are installed with the latest versions, else it might cause issues with downloading RSyntext.*
 
+* To browse vignette type the following in console:
+
+`browseVignettes(package ='RSyntext')`
 
 ### Function 1: `text_summarize`
 
@@ -98,6 +93,14 @@ Output
 
 <br>
 
+#### Screenshot:
+
+
+![](img\text_summarize_ex.PNG)
+
+<br>
+
+
 ### Function 2: `text_grams`
 
 `text_grams` function of class `RSyntext` takes in `character` string as an input and produces `data.frame` as an output containing lists of top 5 ngrams. The top `k` ngrams and `n` are user based inputs with default values (k=5 and n=(2,3))
@@ -149,6 +152,14 @@ Output
 
 <br>
 
+#### Screenshot:
+
+
+![](img\text_grams_ex.PNG)
+
+<br>
+
+
 ### Function 3: `text_quality`
 
 `text_quality` function of class `RSyntext` takes in `character` string as an input and produces `data.frame` as an output a qualitative summary of the input. The qualitative summary would include the following:
@@ -196,6 +207,13 @@ Output
 |spell_error|count_spell_error|proportion_spell_error|toxic_words|count_toxic_words|proportion_toxic_words|
 |---|---|---|---|---|---|
 |wrng|1|0.142857|shitty|1|0.142857|
+
+#### Screenshot:
+
+
+![](img\text_grams_ex.PNG)
+
+<br>
 
 ## Test Coverage
 
