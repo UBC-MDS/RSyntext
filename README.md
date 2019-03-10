@@ -96,7 +96,7 @@ Output
 #### Screenshot:
 
 
-![](img\text_summarize_ex.PNG)
+![](img/text_summarize_ex.PNG)
 
 <br>
 
@@ -155,7 +155,7 @@ Output
 #### Screenshot:
 
 
-![](img\text_grams_ex.PNG)
+![](img/text_grams_ex.PNG)
 
 <br>
 
@@ -211,7 +211,7 @@ Output
 #### Screenshot:
 
 
-![](img\text_grams_ex.PNG)
+![](img/text_grams_ex.PNG)
 
 <br>
 
